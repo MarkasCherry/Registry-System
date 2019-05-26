@@ -1,17 +1,31 @@
 import sys
 from loggin import loggin
 from register import register
+from CLASS_User import User
 
-print('Welcome! Choose one from below:')
-print('   Loggin           Register')
-cmd = input()
+logged_in = False
+system_on = True
+user = User(None, None)
 
-if('LOGGIN' == cmd.upper()):
-    loggin()
+while(system_on):
+    if (logged_in):
+        print('You are logged in. What\'s now?')
+        cmd = input()
 
-elif('REGISTER' == cmd.upper()):
-    register()
+    else:
+        print('Welcome! Choose one from below:')
+        print('   Loggin           Register')
+        cmd = input()
 
-else:
-    print('Wrong input. Please try again later')
-    sys.exit()
+        if('LOGGIN' == cmd.upper()):
+            logged_in = loggin()
+
+            if (logged_in):
+                #load user info
+                x = 0
+
+        elif('REGISTER' == cmd.upper()):
+            register()
+
+        else:
+            print('Something went wrong. Please try again.')
