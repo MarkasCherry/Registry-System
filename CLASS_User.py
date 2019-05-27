@@ -11,6 +11,9 @@ class User:
         self.moderator = 0
 
     #setters
+    def set_username(self, username):
+        self.username = username
+
     def set_password(self, password):
         self.password = password
 

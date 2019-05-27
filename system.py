@@ -1,16 +1,33 @@
 import sys
 from loggin import loggin
+from loggin import user
 from register import register
 from CLASS_User import User
+from save import save
+
 
 logged_in = False
 system_on = True
-user = User(None, None)
 
 while(system_on):
     if (logged_in):
-        print('You are logged in. What\'s now?')
+        if (user.get_firstName() == 'unknown'):
+            print('Welcome back, ' + user.get_username())
+        else:
+            print('Welcome back, ' + user.get_firstName())
+
+        print(' Quit    SingOut')
         cmd = input()
+
+        if('SINGOUT' == cmd.upper()):
+            save(user)
+            del user
+            user = User(None, None)
+            logged_in = False
+
+        if('QUIT' == cmd.upper()):
+            save(user)
+            sys.exit()
 
     else:
         print('Welcome! Choose one from below:')
@@ -18,11 +35,8 @@ while(system_on):
         cmd = input()
 
         if('LOGGIN' == cmd.upper()):
-            logged_in = loggin()
+            logged_in = loggin(user)
 
-            if (logged_in):
-                #load user info
-                x = 0
 
         elif('REGISTER' == cmd.upper()):
             register()
