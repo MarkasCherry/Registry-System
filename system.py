@@ -16,16 +16,19 @@ while(system_on):
         else:
             print('Welcome back, ' + user.get_firstName())
 
-        print(' Quit    SingOut')
+        print(' Info    SingOut     Quit')
         cmd = input()
 
-        if('SINGOUT' == cmd.upper()):
+        if('INFO' == cmd.upper()):
+            user.print()
+
+        elif('SINGOUT' == cmd.upper()):
             save(user)
             del user
             user = User(None, None)
             logged_in = False
 
-        if('QUIT' == cmd.upper()):
+        elif('QUIT' == cmd.upper()):
             save(user)
             sys.exit()
 

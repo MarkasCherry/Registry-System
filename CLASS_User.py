@@ -106,3 +106,14 @@ class User:
         self.ask_email()
         self.ask_age()
         self.ask_gender()
+
+    def print(self):
+        print('password=' + self.password +
+                '\nusername=' + self.username +
+                '\nfirstName=' + self.firstName +
+                '\nlastName=' + self.lastName +
+                '\nemail=' + self.email +
+                '\nage='+ str(self.age) +
+                '\ngender=' + self.gender +
+                '\nadmin=' + str(self.admin) +
+                '\nmoderator=' + str(self.moderator))

@@ -1,6 +1,7 @@
 import os
 
 def save(user):
+    f = open('users/' + user.get_username(), 'w').close()
     f = open('users/' + user.get_username(), 'w')
     f.write('password=' + user.get_password() +
             '\nusername=' + user.get_username() +
