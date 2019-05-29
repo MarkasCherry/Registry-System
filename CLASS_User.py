@@ -1,3 +1,5 @@
+from getpass import getpass
+
 class User:
     def __init__(self, username, password):
         self.username = username
@@ -68,9 +70,16 @@ class User:
 
     #ask for input
     def ask_password(self):
-        data = input('Enter your old password: ')
-        if(data == self.password):
-            data = input('Enter new password: ')
+        data = getpass('Enter your old password: ')
+        if(data == self.get_password()):
+            password_INVALID = True
+            while (password_INVALID):
+                data = getpass('Enter new password: ')
+                if(len(data) < 6):
+                    print('\nPassword has to be atleast 6 characters long')
+                else:
+                    password_INVALID = False
+
             self.set_password(data)
 
         else:
@@ -98,7 +107,7 @@ class User:
     def ask_gender(self):
         data = input('Your sex: ')
         if (data == '0'): data = 'unknown'
-        self.set_age(data)
+        self.set_gender(data)
 
     def ask(self):
         self.ask_firstName()
@@ -108,12 +117,13 @@ class User:
         self.ask_gender()
 
     def print(self):
-        print('password=' + self.password +
-                '\nusername=' + self.username +
-                '\nfirstName=' + self.firstName +
-                '\nlastName=' + self.lastName +
-                '\nemail=' + self.email +
-                '\nage='+ str(self.age) +
-                '\ngender=' + self.gender +
-                '\nadmin=' + str(self.admin) +
-                '\nmoderator=' + str(self.moderator))
+        print('\n\nUsername = ' + self.username +
+            '\nReal name = ' + self.firstName + ' ' + self.lastName +
+            '\nEmail = ' + self.email +
+            '\nAge = '+ str(self.age) +
+            '\nGender = ' + self.gender)
+
+        if(self.admin == 1): print('You are the administrator')
+        if(self.moderator == 1): print('You are the moderator')
+
+        print('\n')

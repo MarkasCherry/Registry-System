@@ -1,0 +1,9 @@
+password=admin
+username=admin
+firstName=unknown
+lastName=unknown
+email=admin@registry.system
+age=0
+gender=unknown
+admin=1
+moderator=1

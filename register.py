@@ -1,7 +1,15 @@
 import os
+from getpass import getpass
 from userExists import userExists
 from CLASS_User import User
 from save import save
+
+def checkPassword(password):
+    if(len(password) < 6):
+        print('\nPassword has to be atleast 6 characters long')
+        return True
+
+    return False
 
 def checkUsername(username):
     for i in username:
@@ -14,11 +22,13 @@ def checkUsername(username):
 
 def register():
     username_INVALID = True
-    while (username_INVALID):
+    password_INVALID = True
+    while (username_INVALID and password_INVALID):
         print('')
         username = input('Username: ')
-        password = input('Password: ')
+        password = getpass('Password: ')
         username_INVALID = checkUsername(username)
+        password_INVALID = checkPassword(password)
 
     if(userExists(username)):
         print('Username already taken. Try other one.')
@@ -32,4 +42,4 @@ def register():
         save(user)
 
         del user
-        print('You are now registered! Please log in')
+        print('\nYou are now registered! Please log in')
