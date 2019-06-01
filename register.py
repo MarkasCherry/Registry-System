@@ -23,7 +23,7 @@ def checkUsername(username):
 def register():
     username_INVALID = True
     password_INVALID = True
-    while (username_INVALID and password_INVALID):
+    while (username_INVALID or password_INVALID):
         print('')
         username = input('Username: ')
         password = getpass('Password: ')
